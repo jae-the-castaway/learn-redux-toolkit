@@ -11,7 +11,7 @@ function App() {
 
   const [numDogs, setNumdogs] = useState(10)
 
-  const { data = [], isFetching} = useFetchBreedsQuery(numDogs)
+  const { data = [], error, isFetching} = useFetchBreedsQuery(numDogs)
 
   function handleClick() {
     dispatch(amountAdded(3))
