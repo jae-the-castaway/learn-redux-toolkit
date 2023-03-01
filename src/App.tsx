@@ -3,13 +3,15 @@ import { useAppDispatch, useAppSelector } from './app/hooks'
 import { incremented, amountAdded } from './features/counter/counter-slice'
 import { useFetchBreedsQuery } from './features/dogs/dogs-api-slice'
 import reactLogo from './assets/react.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './App.css'
+import { faDog } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch()
 
-  const [numDogs, setNumdogs] = useState(10)
+  const [numDogs, setNumdogs] = useState(100)
 
   const { data = [], error, isFetching} = useFetchBreedsQuery(numDogs)
 
@@ -17,12 +19,11 @@ function App() {
     dispatch(amountAdded(3))
   }
   
+  console.log(data)
   return (
-    <div className="App">
-      <div>
-
-      </div>
-      <h1>Learn Redux</h1>
+    <div className="App ">
+      <FontAwesomeIcon icon={faDog} />
+      <h1>Randog</h1>
       <div className="card">
         <button onClick={handleClick}>
           count is {count}
@@ -32,6 +33,16 @@ function App() {
       <div>
         <p>Dogs to fetch:</p>
         <select value={numDogs} onChange={(e) => setNumdogs(Number(e.target.value))}>
+          <option value='5'>5</option>
+          <option value='10'>10</option>
+          <option value='15'>15</option>
+          <option value='20'>20</option>
+        </select>
+      </div>
+      <div>
+        <p>Breeds:</p>
+        <select value={numDogs} onChange={(e) => setNumdogs(Number(e.target.value))}>
+
           <option value='5'>5</option>
           <option value='10'>10</option>
           <option value='15'>15</option>
